@@ -15,6 +15,8 @@ class ISelenium(unittest.TestCase):
     def get_config(self):
         config = configparser.ConfigParser()
         config.read(os.path.join(os.environ['APPDATA'], 'iselenium.ini'))
+        print("111111111111111")
+        print(os.path.join(os.environ['APPDATA'], 'iselenium.ini'))
         return config
 
     def tearDown(self):
