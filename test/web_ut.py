@@ -25,21 +25,22 @@ class ISelenium(unittest.TestCase):
     def setUp(self):
         config = self.get_config()
 
-        # 控制是否采用无界面形式运行自动化测试
-        try:
-            using_headless = os.environ["using_headless"]
-        except KeyError:
-            using_headless = None
-            print('没有配置环境变量 using_headless, 按照有界面方式运行自动化测试')
+        # # 控制是否采用无界面形式运行自动化测试
+        # try:
+        #     using_headless = os.environ["using_headless"]
+        # except KeyError:
+        #     using_headless = None
+        #     print('没有配置环境变量 using_headless, 按照有界面方式运行自动化测试')
+        #
+        # chrome_options = Options()
+        # if using_headless is not None and using_headless.lower() == 'true':
+        #     print('使用无界面方式运行')
+        #     chrome_options.add_argument("--headless")
 
-        chrome_options = Options()
-        if using_headless is not None and using_headless.lower() == 'true':
-            print('使用无界面方式运行')
-            chrome_options.add_argument("--headless")
-
-        self.driver = webdriver.Chrome(executable_path=config.get('driver', 'chrome_driver'),
-                                       options=chrome_options)
-
+        # self.driver = webdriver.Chrome(executable_path=config.get('driver', 'chrome_driver'),
+        #                                options=chrome_options)
+        self.driver = webdriver.Chrome()
+        
     @allure.story('Test key word 今日头条')
     def test_webui_1(self):
         """ 测试用例1，验证'今日头条'关键词在百度上的搜索结果
